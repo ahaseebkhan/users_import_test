@@ -1,0 +1,15 @@
+<%= form_with url: "/users/import_users", multipart: true do |form| %>
+  <%= file_field_tag :file, accept: 'csv' %>
+  <br/><br/>
+  <%= submit_tag 'Import CSV' %>
+<% end %>
+
+<% if @users.present? %>
+  <% @users.each_with_index do |user, i| %>
+    <% if user.errors.full_messages_for(:change).present? %>
+      <p><%= "#{i + 1}. " + user.errors.full_messages_for(:change).join(', ') %></p>
+    <% else %>
+      <p><%= "#{i + 1}. " + user.name %> was successfully saved</p>
+    <% end %>
+  <% end %>
+<% end %>
