@@ -1,5 +1,5 @@
 <%= form_with url: "/users/import_users", multipart: true do |form| %>
-  <%= file_field_tag :file, accept: 'csv' %>
+  <%= file_field_tag :file, accept: 'text/csv' %>
   <br/><br/>
   <%= submit_tag 'Import CSV' %>
 <% end %>
